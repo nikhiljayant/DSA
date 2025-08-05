@@ -11,6 +11,15 @@ function pattern14(num) {
   console.log(str);
 }
 
-console.log("Pattern 14:");
+function pattern15(num) {
+  let str = "";
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < num - i; j++) {
+      str += String.fromCharCode(65 + j);
+    }
+    str += "\n";
+  }
+  console.log(str);
+}
 
-pattern14(5);
+pattern15(5);
