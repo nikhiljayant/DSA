@@ -33,4 +33,32 @@ function pattern16(num) {
   console.log(str);
 }
 
-pattern16(5);
+function pattern17(num) {
+  let str = "";
+  for (let i = 0; i < num; i++) {
+    const breakPoint = Math.ceil((2 * i + 1) / 2);
+
+    for (let j = 0; j < (num - i - 1); j++) {
+      str += " ";
+    }
+
+    let charCount = 65;
+    for (let j = 1; j <= 2 * i + 1; j++) {
+      if (j <= breakPoint) {
+        str += String.fromCharCode(65 + j);
+        charCount++;
+      } else {
+        charCount--;
+        str += String.fromCharCode(charCount);
+      }
+    }
+
+    for (let j = 0; j < (num - i - 1); j++) {
+      str += " ";
+    }
+    str += "\n";
+  }
+  console.log(str);
+}
+
+pattern17(5);
