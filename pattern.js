@@ -38,7 +38,7 @@ function pattern17(num) {
   for (let i = 0; i < num; i++) {
     const breakPoint = Math.ceil((2 * i + 1) / 2);
 
-    for (let j = 0; j < (num - i - 1); j++) {
+    for (let j = 0; j < num - i - 1; j++) {
       str += " ";
     }
 
@@ -53,7 +53,7 @@ function pattern17(num) {
       }
     }
 
-    for (let j = 0; j < (num - i - 1); j++) {
+    for (let j = 0; j < num - i - 1; j++) {
       str += " ";
     }
     str += "\n";
@@ -61,4 +61,15 @@ function pattern17(num) {
   console.log(str);
 }
 
-pattern17(5);
+function pattern18(num) {
+  let str = "";
+  for (let i = 0; i <= num; i++) {
+    for (let j = 0; j <= i; j++) {
+      str += String.fromCharCode(65 + (num + j - i));
+    }
+    str += "\n";
+  }
+  console.log(str);
+}
+
+pattern18(5);
