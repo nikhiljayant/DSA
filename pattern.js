@@ -106,4 +106,36 @@ function pattern19(num) {
   console.log(str);
 }
 
-pattern19(5);
+function pattern20(num) {
+  let str = "";
+  for (let i = num; i >= 0; i--) {
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    for (let k = 0; k < 2 * i; k++) {
+      str += " ";
+    }
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+      str += "\n";
+  }
+
+  for (let i = 1; i < num; i++) {
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    for (let k = 0; k < 2 * i; k++) {
+      str += " ";
+    }
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    if (i !== num - 1) {
+      str += "\n";
+    }
+  }
+  console.log(str);
+}
+
+pattern20(5);
