@@ -138,4 +138,19 @@ function pattern20(num) {
   console.log(str);
 }
 
-pattern20(5);
+function pattern21(num) {
+  let str = "";
+  for(let i = 0; i < num; i++) {
+    for(let j = 0; j < num; j++) {
+      if(i === 0 || i === num - 1 || j === 0 || j === num - 1) {
+        str += "*";
+      } else {
+        str += " ";
+      }
+    }
+    str += "\n";
+  }
+  console.log(str);
+}
+
+pattern21(5);
