@@ -72,4 +72,38 @@ function pattern18(num) {
   console.log(str);
 }
 
-pattern18(5);
+function pattern19(num) {
+  let str = "";
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    for (let k = 0; k < 2 * i; k++) {
+      str += " ";
+    }
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    if (i !== num - 1) {
+      str += "\n";
+    }
+  }
+
+  for (let i = num; i >= 0; i--) {
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    for (let k = 0; k < 2 * i; k++) {
+      str += " ";
+    }
+    for (let j = 0; j < num - i; j++) {
+      str += "*";
+    }
+    if (i !== 0) {
+      str += "\n";
+    }
+  }
+  console.log(str);
+}
+
+pattern19(5);
