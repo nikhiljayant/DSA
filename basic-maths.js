@@ -23,7 +23,20 @@ function reverseNumber(num) {
 // reverseNumber(7789);
 
 function palindrome(num) {
+  const numArr = num.toString().split("");
+  let start = 0;
+  let end = numArr.length - 1;
 
+  for (let i = 0; i <= Math.floor(numArr.length/2); i++) {
+    if(numArr[start] === numArr[end]) {
+      start++;
+      end--;
+    } else {
+      console.log("It's not a palindrome");
+      return;
+    }
+  }
+  console.log("It's a palindrome");
 }
 
 palindrome(12321);
