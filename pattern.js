@@ -118,7 +118,7 @@ function pattern20(num) {
     for (let j = 0; j < num - i; j++) {
       str += "*";
     }
-      str += "\n";
+    str += "\n";
   }
 
   for (let i = 1; i < num; i++) {
@@ -140,9 +140,9 @@ function pattern20(num) {
 
 function pattern21(num) {
   let str = "";
-  for(let i = 0; i < num; i++) {
-    for(let j = 0; j < num; j++) {
-      if(i === 0 || i === num - 1 || j === 0 || j === num - 1) {
+  for (let i = 0; i < num; i++) {
+    for (let j = 0; j < num; j++) {
+      if (i === 0 || i === num - 1 || j === 0 || j === num - 1) {
         str += "*";
       } else {
         str += " ";
@@ -153,4 +153,20 @@ function pattern21(num) {
   console.log(str);
 }
 
-pattern21(5);
+function pattern22(num) {
+  const size = num * 2 - 1;
+  let str = "";
+  for (let i = 0; i < size; i++) {
+    for (let j = 0; j < size; j++) {
+      let top = j;
+      let left = i;
+      let bottom = size - 1 - i;
+      let right = size - 1 - j;
+      str += num - Math.min(top, left, bottom, right)
+    }
+    str += "\n";
+  }
+  console.log(str);
+}
+
+pattern22(5);
