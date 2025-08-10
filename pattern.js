@@ -162,7 +162,7 @@ function pattern22(num) {
       let left = i;
       let bottom = size - 1 - i;
       let right = size - 1 - j;
-      str += num - Math.min(top, left, bottom, right)
+      str += num - Math.min(top, left, bottom, right);
     }
     str += "\n";
   }
