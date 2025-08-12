@@ -27,8 +27,8 @@ function palindrome(num) {
   let start = 0;
   let end = numArr.length - 1;
 
-  for (let i = 0; i <= Math.floor(numArr.length/2); i++) {
-    if(numArr[start] === numArr[end]) {
+  for (let i = 0; i <= Math.floor(numArr.length / 2); i++) {
+    if (numArr[start] === numArr[end]) {
       start++;
       end--;
     } else {
@@ -39,4 +39,28 @@ function palindrome(num) {
   console.log("It's a palindrome");
 }
 
-palindrome(12321);
+// palindrome(12321);
+
+// Greatest Common Divisor (GCD) using brute force method
+function gcd(num1, num2) {
+  const num1Arr = [];
+  const num2Arr = [];
+  for (let i = 1; i <= num1; i++) {
+    if (num1 % i === 0) {
+      num1Arr.push(i);
+    }
+  }
+  for (let i = 1; i <= num2; i++) {
+    if (num2 % i === 0) {
+      num2Arr.push(i);
+    }
+  }
+  if (num1Arr.length > 0) {
+    const uniqueElements = num1Arr.filter((item) => num2Arr.includes(item));
+    if (uniqueElements.length > 0) {
+      console.log(Math.max(...uniqueElements));
+    }
+  }
+}
+
+gcd(9, 114);
