@@ -52,4 +52,20 @@ function gcd(num1, num2) {
   console.log(maxNum);
 }
 
-gcd(9, 12);
+// gcd(9, 12);
+
+function armstrong(num) {
+  let sum = 0;
+  let numCopy = num;
+  while(numCopy > 0) {
+    sum += (Math.floor(numCopy % 10) * Math.floor(numCopy % 10) * Math.floor(numCopy % 10));
+    numCopy = Math.floor(numCopy / 10);
+  }
+  if(sum === num) {
+    console.log("It's an Armstrong number");
+  } else {
+    console.log("It's not an Armstrong number");
+  }
+}
+
+armstrong(371);
