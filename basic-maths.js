@@ -43,24 +43,13 @@ function palindrome(num) {
 
 // Greatest Common Divisor (GCD) using brute force method
 function gcd(num1, num2) {
-  const num1Arr = [];
-  const num2Arr = [];
-  for (let i = 1; i <= num1; i++) {
-    if (num1 % i === 0) {
-      num1Arr.push(i);
+  let maxNum = 1;
+  for (let i = 1; i <= Math.min(num1, num2); i++) {
+    if (num1 % i === 0 && num2 % i === 0) {
+      maxNum = i;
     }
   }
-  for (let i = 1; i <= num2; i++) {
-    if (num2 % i === 0) {
-      num2Arr.push(i);
-    }
-  }
-  if (num1Arr.length > 0) {
-    const uniqueElements = num1Arr.filter((item) => num2Arr.includes(item));
-    if (uniqueElements.length > 0) {
-      console.log(Math.max(...uniqueElements));
-    }
-  }
+  console.log(maxNum);
 }
 
-gcd(9, 114);
+gcd(9, 12);
