@@ -73,17 +73,22 @@ function armstrong(num) {
 
 // armstrong(371);
 
-function allDivisors(num) {
+function findDivisors(n) {
   let divisors = [];
 
-  // Loop till half of the number as no number can have a divisor greater than half of itself
-  for (let i = 1; i <= Math.floor(num / 2); i++) {
-    if (num % i === 0) {
+  let sqrtN = Math.sqrt(n);
+
+  for (let i = 1; i <= sqrtN; i++) {
+    if (n % i === 0) {
       divisors.push(i);
+
+      if (i !== n / i) {
+        divisors.push(n / i);
+      }
     }
   }
-  divisors.push(num); // Include the number itself
+  divisors.sort((a, b) => a - b); // Sort the divisors in ascending order
   console.log(divisors);
 }
 
-allDivisors(33);
+findDivisors(34);
