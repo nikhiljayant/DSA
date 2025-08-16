@@ -91,4 +91,25 @@ function findDivisors(n) {
   console.log(divisors);
 }
 
-findDivisors(34);
+// findDivisors(34);
+
+function isPrime(num) {
+  const sqrt = Math.sqrt(num);
+  let count = 0;
+
+  for (let i = 1; i <= sqrt; i++) {
+    if (num % i === 0) {
+      count++;
+      if (num / i != i) {
+        count++;
+      }
+    }
+  }
+  if (count === 2) {
+    console.log("It's a prime number");
+  } else {
+    console.log("It's not a prime number");
+  }
+}
+
+isPrime(11);
