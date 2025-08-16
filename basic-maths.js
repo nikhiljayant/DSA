@@ -43,16 +43,29 @@ function palindrome(num) {
 
 // Greatest Common Divisor (GCD) using brute force method
 function gcd(num1, num2) {
-  let maxNum = 1;
-  for (let i = 1; i <= Math.min(num1, num2); i++) {
-    if (num1 % i === 0 && num2 % i === 0) {
-      maxNum = i;
+  // let maxNum = 1;
+  // for (let i = 1; i <= Math.min(num1, num2); i++) {
+  //   if (num1 % i === 0 && num2 % i === 0) {
+  //     maxNum = i;
+  //   }
+  // }
+  // console.log(maxNum);
+
+  while (num1 > 0 && num2 > 0) {
+    if (num1 > num2) {
+      num1 = num1 % num2;
+    } else {
+      num2 = num2 % num1;
+    }
+    if (num1 === 0) {
+      console.log(num2);
+    } else if (num2 === 0) {
+      console.log(num1);
     }
   }
-  console.log(maxNum);
 }
 
-// gcd(9, 12);
+gcd(9, 12);
 
 function armstrong(num) {
   let sum = 0;
@@ -112,4 +125,4 @@ function isPrime(num) {
   }
 }
 
-isPrime(11);
+// isPrime(11);
