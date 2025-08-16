@@ -57,15 +57,33 @@ function gcd(num1, num2) {
 function armstrong(num) {
   let sum = 0;
   let numCopy = num;
-  while(numCopy > 0) {
-    sum += (Math.floor(numCopy % 10) * Math.floor(numCopy % 10) * Math.floor(numCopy % 10));
+  while (numCopy > 0) {
+    sum +=
+      Math.floor(numCopy % 10) *
+      Math.floor(numCopy % 10) *
+      Math.floor(numCopy % 10);
     numCopy = Math.floor(numCopy / 10);
   }
-  if(sum === num) {
+  if (sum === num) {
     console.log("It's an Armstrong number");
   } else {
     console.log("It's not an Armstrong number");
   }
 }
 
-armstrong(371);
+// armstrong(371);
+
+function allDivisors(num) {
+  let divisors = [];
+
+  // Loop till half of the number as no number can have a divisor greater than half of itself
+  for (let i = 1; i <= Math.floor(num / 2); i++) {
+    if (num % i === 0) {
+      divisors.push(i);
+    }
+  }
+  divisors.push(num); // Include the number itself
+  console.log(divisors);
+}
+
+allDivisors(33);
