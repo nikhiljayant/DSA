@@ -37,12 +37,21 @@ function printNto1usingBacktrack(start, end) {
 
 // printNto1usingBacktrack(1, 5);
 
-function sumOfN(num, sum) {
-  if (num === 0) {
-    console.log(sum);
-    return;
-  }
-  sumOfN(num - 1, sum + num);
+// Parameterized recursion
+// function sumOfN(num, sum) {
+//   if (num === 0) {
+//     console.log(sum);
+//     return;
+//   }
+//   sumOfN(num - 1, sum + num);
+// }
+
+// sumOfN(10, 0);
+
+// Functional recursion
+function sumOfN(num) {
+  if (num === 0) return 0;
+  return num + sumOfN(num - 1);
 }
 
-sumOfN(5, 0);
+// console.log(sumOfN(3));
