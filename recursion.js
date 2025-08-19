@@ -36,3 +36,13 @@ function printNto1usingBacktrack(start, end) {
 }
 
 // printNto1usingBacktrack(1, 5);
+
+function sumOfN(num, sum) {
+  if (num === 0) {
+    console.log(sum);
+    return;
+  }
+  sumOfN(num - 1, sum + num);
+}
+
+sumOfN(5, 0);
