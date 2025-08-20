@@ -55,3 +55,13 @@ function sumOfN(num) {
 }
 
 // console.log(sumOfN(3));
+
+function reverseArr(arr, start, end) {
+  if (start >= end) {
+    console.log(arr);
+    return;
+  }
+  [arr[start], arr[end]] = [arr[end], arr[start]];
+  reverseArr(arr, start + 1, end - 1);
+}
+reverseArr([1, 2, 3], 0, 2);
