@@ -56,12 +56,16 @@ function sumOfN(num) {
 
 // console.log(sumOfN(3));
 
-function reverseArr(arr, start, end) {
-  if (start >= end) {
+const arr = [1, 2, 3, 4, 5, 6];
+function reverseArr(index) {
+  if (index >= Math.floor(arr.length / 2)) {
     console.log(arr);
     return;
   }
-  [arr[start], arr[end]] = [arr[end], arr[start]];
-  reverseArr(arr, start + 1, end - 1);
+  [arr[index], arr[(arr.length - index) - 1]] = [
+    arr[(arr.length - index) - 1],
+    arr[index],
+  ];
+  reverseArr(index + 1);
 }
-reverseArr([1, 2, 3], 0, 2);
+reverseArr(0);
