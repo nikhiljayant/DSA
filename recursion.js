@@ -62,10 +62,30 @@ function reverseArr(index) {
     console.log(arr);
     return;
   }
-  [arr[index], arr[(arr.length - index) - 1]] = [
-    arr[(arr.length - index) - 1],
+  [arr[index], arr[arr.length - index - 1]] = [
+    arr[arr.length - index - 1],
     arr[index],
   ];
   reverseArr(index + 1);
 }
-reverseArr(0);
+// reverseArr(0);
+
+const str = "nikhil";
+const toArr = str.split("");
+function palindrom(index) {
+  if (index >= Math.floor(toArr.length / 2)) {
+    if (toArr.join("") === str) {
+      console.log("It's a palindrom string");
+    } else {
+      console.log("It's not a palindrome string");
+    }
+    return;
+  }
+  [toArr[index], toArr[toArr.length - index - 1]] = [
+    toArr[toArr.length - index - 1],
+    toArr[index],
+  ];
+
+  palindrom(index + 1);
+}
+palindrom(0);
