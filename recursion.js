@@ -73,6 +73,10 @@ function reverseArr(index) {
 const str = "nikhil";
 const toArr = str.split("");
 function palindrom(index) {
+  if (toArr[index] !== toArr[toArr.length - index - 1]) {
+    console.log("It's not a palindrome string");
+    return;
+  }
   if (index >= Math.floor(toArr.length / 2)) {
     if (toArr.join("") === str) {
       console.log("It's a palindrom string");
