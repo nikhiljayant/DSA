@@ -52,3 +52,19 @@ function hashingUsingMap(arr = []) {
 // console.log(hashingUsingMap([1, 1, 1, 2, 3, 4, 5, 0, 0, 12]).get(1));
 
 // hashingUsingMap([1, 1, 1, 2, 3, 4, 5, 0, 0, 12]);
+
+function characterHashingUsingMap(str = "") {
+  const map = new Map();
+  for(let i =0; i<str.length; i++) {
+    if(map.has(str[i])) {
+      map.set(str[i], map.get(str[i]) + 1);
+    } else {
+      map.set(str[i], 1);
+    }
+  }
+  return map;
+}
+
+console.log(characterHashingUsingMap("abddddABCD1234!@#").get('d'));
+
+// 44:39
