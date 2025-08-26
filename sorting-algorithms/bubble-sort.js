@@ -2,6 +2,7 @@
 function bubbleSort(arr = []) {
   let didSwap = 0;
   for (let i = arr.length - 1; i > 0; i--) {
+    // Run j from 0 to i-1
     for (let j = 0; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
         // Swap
