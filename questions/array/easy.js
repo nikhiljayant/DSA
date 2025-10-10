@@ -34,3 +34,20 @@ function fn(arr, k) {
 }
 
 fn([3, 7, 8, 9, 10, 11], 3);
+
+function findLeader(arr) {
+  const leaders = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; j++) {
+      if (arr[j] > arr[i]) {
+        break;
+      } else if (j === arr.length - 1) {
+        leaders.push(arr[i]);
+      }
+    }
+  }
+
+  console.log(leaders);
+}
+
+findLeader([10, 22, 12, 3, 0, 6]);
