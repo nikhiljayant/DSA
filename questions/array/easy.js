@@ -1,3 +1,23 @@
+function profit(arr) {
+  let maxProfit = 0;
+  let minPrice = Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < minPrice) {
+      minPrice = arr[i];
+    } else {
+      const profit = arr[i] - minPrice;
+      if (profit > maxProfit) {
+        maxProfit = profit;
+      }
+    }
+  }
+
+  return maxProfit;
+}
+
+console.log(profit([3, 2, 6, 5, 0, 3]));
+
 function union(arr1, arr2) {
   const newArr = [];
 
