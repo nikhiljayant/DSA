@@ -1,3 +1,38 @@
+function duplicate(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        return arr[i];
+      }
+    }
+  }
+
+  return -1;
+}
+
+console.log(duplicate([1, 2, 3, -4]));
+
+function rearrange(arr) {
+  const mid = Math.ceil((arr.length - 1) / 2);
+
+  let low = 0;
+  let high = mid;
+
+  const result = [];
+
+  for (let i = 0; i < arr.length - mid; i++) {
+    result.push(arr[low]);
+    result.push(arr[high]);
+
+    low++;
+    high++;
+  }
+
+  return result;
+}
+
+rearrange([1, 2, 3, -1, -2, -3]);
+
 function count(arr) {
   let previousCount = 0;
   let count = 0;
