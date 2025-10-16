@@ -1,3 +1,24 @@
+function kadaneAlgo(arr) {
+  let ans = 0;
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+
+    if (sum > ans) {
+      ans = sum;
+    }
+
+    if (sum < 0) {
+      sum = 0;
+    }
+  }
+
+  return ans;
+}
+
+console.log(kadaneAlgo([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
 function profit(arr) {
   let maxProfit = 0;
   let minPrice = Infinity;
