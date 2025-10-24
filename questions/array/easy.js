@@ -92,3 +92,26 @@ function findLeader(arr) {
 }
 
 findLeader([10, 22, 12, 3, 0, 6]);
+
+function rearrange(arr) {
+  if (arr.length === 0) return;
+
+  let positive = 0;
+  let negative = 1;
+
+  let answer = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= 0) {
+      answer[positive] = arr[i];
+      positive += 2;
+    } else {
+      answer[negative] = arr[i];
+      negative += 2;
+    }
+  }
+
+  return answer;
+}
+
+console.log(rearrange([3, 4, -2, 0, -1, -4]));
