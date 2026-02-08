@@ -1,3 +1,35 @@
+// Highest/Lowest frequency elements
+
+function calc(arr) {
+  const map = new Map();
+
+  for (let i = 0; i < arr.length; i++) {
+    if (map.has(arr[i])) {
+      const currentVal = map.get(arr[i]);
+      map.set(arr[i], currentVal + 1);
+    } else {
+      map.set(arr[i], 1);
+    }
+  }
+
+  let highestFrequency = -Infinity;
+  let lowestFrequency = Infinity;
+
+  for (const [key, value] of map) {
+    if (value > highestFrequency) {
+      highestFrequency = key;
+    }
+    if (value < lowestFrequency) {
+      lowestFrequency = key;
+    }
+  }
+
+  console.log("highestFrequency: ", highestFrequency);
+  console.log("lowestFrequency: ", lowestFrequency);
+}
+
+calc([10, 15, 10, 5, 10, 1]);
+
 function hashing(arr, noToFind) {
   const hashArr = new Array(arr.length).fill(0);
   for (let i = 0; i < arr.length; i++) {
@@ -55,8 +87,8 @@ function hashingUsingMap(arr = []) {
 
 function characterHashingUsingMap(str = "") {
   const map = new Map();
-  for(let i =0; i<str.length; i++) {
-    if(map.has(str[i])) {
+  for (let i = 0; i < str.length; i++) {
+    if (map.has(str[i])) {
       map.set(str[i], map.get(str[i]) + 1);
     } else {
       map.set(str[i], 1);
@@ -65,6 +97,6 @@ function characterHashingUsingMap(str = "") {
   return map;
 }
 
-console.log(characterHashingUsingMap("abddddABCD1234!@#").get('d'));
+console.log(characterHashingUsingMap("abddddABCD1234!@#").get("d"));
 
 // 44:39
