@@ -15,6 +15,20 @@ function rotate(arr) {
 
 rotate([1, 2, 3, 4, 5]);
 
+// Rotate array by k
+var rotate = function (nums, k) {
+  const n = nums.length;
+  const newArr = new Array(n);
+
+  for (let i = 0; i < n; i++) {
+    newArr[(i + k) % n] = nums[i];
+  }
+
+  console.log(newArr);
+};
+
+rotate([1, 2, 3, 4, 5, 6, 7], 3);
+
 // Move 0'z to the end without hampering the order of non-zero elements
 
 function move(arr) {
