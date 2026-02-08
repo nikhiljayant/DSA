@@ -1,3 +1,28 @@
+// Maximum Subarray - Kadane's Algorithm
+
+var maxSubArray = function (nums) {
+  if (nums.length < 1) return;
+
+  let maxSum = nums[0];
+  let currSum = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    currSum += nums[i];
+
+    if (currSum > maxSum) {
+      maxSum = currSum;
+    }
+
+    if (currSum < 0) {
+      currSum = 0;
+    }
+  }
+
+  return maxSum;
+};
+
+console.log(maxSubArray([-1, 0, -2]));
+
 function duplicate(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -70,8 +95,8 @@ console.log(
       [6, 7, 8],
       [10, 11, 12],
     ],
-    14
-  )
+    14,
+  ),
 );
 
 function twoSum(arr, target) {
