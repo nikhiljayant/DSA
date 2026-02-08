@@ -1,3 +1,46 @@
+// Rotate array by 1
+function rotate(arr) {
+  if (arr.length <= 1) return arr;
+
+  const firstEl = arr[0];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];
+  }
+
+  arr[arr.length - 1] = firstEl;
+
+  console.log(arr);
+}
+
+rotate([1, 2, 3, 4, 5]);
+
+// Move 0'z to the end without hampering the order of non-zero elements
+
+function move(arr) {
+  let low = 0;
+  let high = 1;
+
+  while (high <= arr.length - 1) {
+    if (arr[low] === 0 && arr[high] !== 0) {
+      const temp = arr[low];
+      arr[low] = arr[high];
+      arr[high] = temp;
+
+      low++;
+      high++;
+    } else if (arr[low] !== 0) {
+      low++;
+    } else if (arr[high] === 0 || (arr[low] === 0 && arr[high] === 0)) {
+      high++;
+    }
+  }
+
+  console.log(arr);
+}
+
+move([1, 0, 2, 3, 0, 5]);
+
 function kadaneAlgo(arr) {
   let ans = 0;
   let sum = 0;
