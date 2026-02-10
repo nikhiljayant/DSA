@@ -1,3 +1,26 @@
+// Rearrange elements by sign
+
+var rearrangeArray = function (nums) {
+  if (nums.length <= 1) return nums;
+
+  const newArr = new Array(nums.length);
+
+  let pos = 0;
+  let neg = 1;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) {
+      newArr[neg] = nums[i];
+      neg += 2;
+    } else if (nums[i] >= 0) {
+      newArr[pos] = nums[i];
+      pos += 2;
+    }
+  }
+
+  return newArr;
+};
+
 // Maximum Subarray - Kadane's Algorithm
 
 var maxSubArray = function (nums) {
