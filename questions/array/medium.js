@@ -21,6 +21,28 @@ var rearrangeArray = function (nums) {
   return newArr;
 };
 
+// Best time to buy and sell stock
+
+var maxProfit = function (prices) {
+  if (prices.length <= 1) return 0;
+
+  let maxProfit = 0;
+
+  let minCount = prices[0];
+
+  for (let i = 1; i < prices.length; i++) {
+    if (prices[i] < minCount) {
+      minCount = prices[i];
+    }
+
+    if (prices[i] - minCount > maxProfit) {
+      maxProfit = prices[i] - minCount;
+    }
+  }
+
+  return maxProfit;
+};
+
 // Maximum Subarray - Kadane's Algorithm
 
 var maxSubArray = function (nums) {
