@@ -1,3 +1,27 @@
+// Longest Consecutive Sequence
+var longestConsecutive = function (nums) {
+  if (nums.length <= 1) return nums.length;
+
+  let maxLength = 0;
+  const numSet = new Set(nums);
+
+  for (let num of numSet) {
+    if (!numSet.has(num - 1)) {
+      let innerMax = 1;
+      let currentNum = num;
+
+      while (numSet.has(currentNum + 1)) {
+        innerMax++;
+        currentNum++;
+      }
+
+      maxLength = Math.max(innerMax, maxLength);
+    }
+  }
+
+  return maxLength;
+};
+
 // Leaders in an array
 class Solution {
   leaders(a) {
