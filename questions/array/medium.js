@@ -1,3 +1,19 @@
+// Leaders in an array
+class Solution {
+  leaders(a) {
+    if (a.length <= 1) return a; // code here
+    const ans = [a[a.length - 1]];
+    let pivot = a[a.length - 1];
+    for (let i = a.length - 2; i >= 0; i--) {
+      if (a[i] >= pivot) {
+        ans.push(a[i]);
+        pivot = a[i];
+      }
+    }
+    return ans.reverse();
+  }
+}
+
 // Next Permutation
 
 function next(arr) {
