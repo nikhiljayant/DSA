@@ -1,3 +1,31 @@
+// Next Permutation
+
+function next(arr) {
+  if (arr.length <= 1) return arr;
+
+  const length = arr.length;
+  let pivot = null;
+
+  for (let i = length - 1; i > 0; i--) {
+    if (arr[i] > arr[i - 1] && !pivot) {
+      pivot = i - 1;
+
+      const temp = arr[length - 1];
+      arr[length - 1] = arr[pivot];
+      arr[pivot] = temp;
+    }
+  }
+
+  const finalArr = [
+    ...arr.slice(0, pivot + 1),
+    ...arr.slice(pivot + 1).reverse(),
+  ];
+
+  return finalArr;
+}
+
+console.log(next([1, 2, 3, 5, 4]));
+
 // Rearrange elements by sign
 
 var rearrangeArray = function (nums) {
