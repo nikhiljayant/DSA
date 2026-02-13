@@ -1,3 +1,44 @@
+// Set Matrix to 0
+
+function matrix(arr) {
+  const row = new Array(arr.length);
+  const col = new Array(arr[0].length);
+
+  // Check for 0's and assign -1 to corresponding row and column
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j] === 0) {
+        row[i] = -1;
+        col[j] = -1;
+      }
+    }
+  }
+
+  // Fill row with 0
+  for (let r = 0; r < row.length; r++) {
+    if (row[r] === -1) {
+      let j = 0;
+      for (let c = 0; c < col.length; c++) {
+        arr[r][j] = 0;
+        j++;
+      }
+    }
+  }
+
+  // Fill column with 0
+  for (let c = 0; c < col.length; c++) {
+    if (col[c] === -1) {
+      let j = 0;
+      for (let r = 0; r < row.length; r++) {
+        arr[j][c] = 0;
+        j++;
+      }
+    }
+  }
+
+  return arr;
+}
+
 // Longest Consecutive Sequence
 var longestConsecutive = function (nums) {
   if (nums.length <= 1) return nums.length;
