@@ -1,3 +1,51 @@
+// Spiral Matrix
+
+var spiralOrder = function (matrix) {
+  let top = 0;
+  let bottom = matrix.length - 1;
+
+  let left = 0;
+  let right = matrix[0].length - 1;
+
+  const answer = [];
+
+  while (left <= right && top <= bottom) {
+    // top = left -> right, top++;
+    if (top <= bottom) {
+      for (let i = left; i <= right; i++) {
+        answer.push(matrix[top][i]);
+      }
+      top++;
+    }
+
+    // right = top -> bottom, right--;
+    if (left <= right) {
+      for (let i = top; i <= bottom; i++) {
+        answer.push(matrix[i][right]);
+      }
+      right--;
+    }
+
+    // bottom = right -> left, bottom--;
+    if (top <= bottom) {
+      for (let i = right; i >= left; i--) {
+        answer.push(matrix[bottom][i]);
+      }
+      bottom--;
+    }
+
+    //left = bottom -> top, left++;
+    if (left <= right) {
+      for (let i = bottom; i >= top; i--) {
+        answer.push(matrix[i][left]);
+      }
+      left++;
+    }
+  }
+
+  return answer;
+};
+
 // Set Matrix to 0
 
 function matrix(arr) {
