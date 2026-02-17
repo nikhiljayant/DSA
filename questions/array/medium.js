@@ -1,3 +1,40 @@
+// Rotate array by 90 degree's
+
+function rotate90(arr) {
+  const row = arr.length;
+  const cols = arr[0].length;
+
+  let low = 0;
+  let high = row - 1;
+
+  while (low <= high) {
+    let temp = arr[low];
+    arr[low] = arr[high];
+    arr[high] = temp;
+
+    low++;
+    high--;
+  }
+
+  for (let i = 0; i < row - 1; i++) {
+    for (let j = cols - 1; j >= i + 1; j--) {
+      [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+    }
+  } // const newArr = Array.from({ length: row }, () => new Array(cols).fill(null));
+  // for (let i=0; i<row; i++) {
+  //   for (let j=0; j<cols; j++) {
+  //     newArr[j][(row-1)-i] = arr[i][j];
+  //   }
+  // }
+  // for (let i=0; i<row; i++) {
+  //     for (let j=0; j<cols; j++) {
+  //         arr[i][j] = newArr[i][j];
+  //     }
+  // }
+
+  return arr;
+}
+
 // Spiral Matrix
 
 var spiralOrder = function (matrix) {
