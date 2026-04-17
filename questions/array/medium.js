@@ -1,3 +1,43 @@
+// 3 Sum
+
+function sum(nums) {
+  const n = nums.length;
+  if (n < 3) return [];
+
+  nums.sort((a, b) => a - b);
+
+  const newArr = [];
+
+  for (let i = 0; i < n - 2; i++) {
+    // If current element is same as previous, skip the iteration to avoid duplicates in result
+    if (i > 0 && nums[i] === nums[i - 1]) {
+      continue;
+    }
+
+    let low = i + 1;
+    let high = n - 1;
+
+    while (low < high) {
+      if (nums[i] + nums[low] + nums[high] === 0) {
+        newArr.push([nums[i], nums[low], nums[high]]);
+
+        while (low < high && nums[low] === nums[low + 1]) low++;
+        while (low < high && nums[high] === nums[high - 1]) high--;
+        low++;
+        high--;
+      } else if (nums[i] + nums[low] + nums[high] < 0) {
+        low++;
+      } else {
+        high--;
+      }
+    }
+  }
+
+  return newArr;
+}
+
+console.log(sum([0, -1, 1, -1, 2, -4]));
+
 // Rotate array by 90 degree's
 
 function rotate90(arr) {
