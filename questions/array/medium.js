@@ -1,3 +1,32 @@
+function mergeIntervals(nums) {
+  if (nums.length <= 1) return nums;
+
+  nums.sort((a, b) => a[0] - b[0]);
+
+  const result = [nums[0]];
+
+  for (let i = 1; i < nums.length; i++) {
+    let current = nums[i];
+    let lastMerged = result[result.length - 1];
+
+    if (lastMerged[1] >= current[0]) {
+      lastMerged[1] = Math.max(lastMerged[1], current[1]);
+    } else {
+      result.push(nums[i]);
+    }
+  }
+
+  return result;
+}
+
+console.log(
+  mergeIntervals([
+    [5, 7],
+    [1, 3],
+    [2, 4],
+  ]),
+);
+
 // 3 Sum
 
 function sum(nums) {
