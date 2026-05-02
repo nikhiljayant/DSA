@@ -93,24 +93,32 @@ function floorCeil(nums, x) {
   return [floor, ceil];
 }
 
-function lastOccurence(nums, x) {
-  let low = 0;
-  let high = nums.length - 1;
+// Find First and Last Position of Element in Sorted Array
 
-  let lastOccurence = -1;
+var searchRange = function (nums, target) {
+  function binarySearch(findFirst) {
+    let low = 0;
+    let high = nums.length - 1;
 
-  while (low <= high) {
-    let mid = Math.floor((low + high) / 2);
+    let answer = -1;
 
-    if (nums[mid] <= x) {
-      lastOccurence = mid;
-      low = mid + 1;
-    } else {
-      high = mid - 1;
+    while (low <= high) {
+      const mid = Math.floor((low + high) / 2);
+
+      if (nums[mid] === target) {
+        answer = mid;
+
+        if (findFirst) high = mid - 1;
+        else low = mid + 1;
+      } else if (nums[mid] > target) {
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
     }
+
+    return answer;
   }
 
-  return lastOccurence;
-}
-
-console.log(lastOccurence([10, 13, 14, 14], 14));
+  return [binarySearch(true), binarySearch(false)];
+};
