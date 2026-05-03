@@ -123,8 +123,7 @@ var searchRange = function (nums, target) {
   return [binarySearch(true), binarySearch(false)];
 };
 
-// Search in rotated sorted array-I
-
+// Search in rotated sorted array-I (without duplicates)
 function search(arr, target) {
   const n = arr.length;
 
@@ -159,3 +158,46 @@ function search(arr, target) {
 }
 
 console.log(search([7, 8, 9, 1, 2, 3, 4, 5, 6], 8));
+
+// Search in rotated sorted array-II (with duplicates)
+function search(arr, target) {
+  const n = arr.length;
+
+  let low = 0;
+  let high = n - 1;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (arr[mid] === target) return true;
+
+    if (arr[low] === arr[mid] && arr[mid] === arr[high]) {
+      low++;
+      high--;
+
+      continue;
+    }
+
+    // Left half is sorted
+    if (arr[low] <= arr[mid]) {
+      if (arr[low] <= target && target <= arr[mid]) {
+        high = mid - 1;
+      } else {
+        low = mid + 1;
+      }
+    }
+    // Right half is sorted
+    else {
+      if (arr[mid] <= target && target <= arr[high]) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+  }
+
+  // Target element not found
+  return false;
+}
+
+console.log(search([2, 5, 6, 0, 0, 1, 2], 0));
