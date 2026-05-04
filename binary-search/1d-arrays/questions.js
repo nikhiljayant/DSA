@@ -201,3 +201,25 @@ function search(arr, target) {
 }
 
 console.log(search([2, 5, 6, 0, 0, 1, 2], 0));
+
+// Find Minimum in Rotated Sorted Array
+function findMin(nums) {
+  let low = 0;
+  let high = nums.length - 1;
+
+  let ans = nums[0];
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (nums[low] <= nums[mid]) {
+      ans = Math.min(ans, nums[low]);
+      low = mid + 1; // Eliminate left half
+    } else {
+      ans = Math.min(ans, nums[mid]);
+      high = mid - 1; // Eliminate Right half
+    }
+  }
+
+  return ans;
+}
