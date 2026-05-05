@@ -223,3 +223,22 @@ function findMin(nums) {
 
   return ans;
 }
+
+// Find out how many times the array has been rotated (Unique elements)
+function rotations(nums) {
+  let low = 0;
+  let high = nums.length - 1;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (nums[mid] < nums[high]) {
+      high = mid;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return low;
+}
+console.log(rotations([6, 7, 1, 2, 3, 4, 5]));
