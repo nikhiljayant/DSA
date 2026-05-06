@@ -242,3 +242,25 @@ function rotations(nums) {
   return low;
 }
 console.log(rotations([6, 7, 1, 2, 3, 4, 5]));
+
+// Single Element in a Sorted Array
+function singleElement (nums) {
+  let low = 0;
+  let high = nums.length-1;
+
+  while (low < high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (mid % 2 === 1) mid--; // make mid even
+
+    if(nums[mid] === nums[mid+1]) {
+      low = mid + 2;
+    } else {
+      high = mid;
+    }
+  }
+
+  return nums[low];
+}
+
+console.log (singleElement([1,1,2,3,3,4,4,8,8])); // Output: 2
