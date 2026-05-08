@@ -283,3 +283,25 @@ function findPeakElement(nums) {
 }
 
 console.log(findPeakElement([1, 2, 1, 3, 5, 6, 4]));
+
+// Finding Sqrt of a number using Binary Search
+function sqrt(n) {
+  let low = 0;
+  let high = n;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (mid * mid === n) return low;
+
+    if (mid * mid > n) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return low - 1;
+}
+
+console.log(sqrt(36));
