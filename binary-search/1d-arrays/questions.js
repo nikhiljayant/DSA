@@ -305,3 +305,25 @@ function sqrt(n) {
 }
 
 console.log(sqrt(36));
+
+// Nth Root of a Number using Binary Search
+function root(n, m) {
+  let low = 0;
+  let high = m;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (mid ** n === m) return low;
+
+    if (mid ** n > m) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return -1;
+}
+
+console.log(root(8, 69));
