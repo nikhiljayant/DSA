@@ -327,3 +327,36 @@ function root(n, m) {
 }
 
 console.log(root(8, 69));
+
+// Koko Eating Bananas
+function kokoEatingBananas(piles, hours) {
+  const maxEl = Math.max(...piles);
+
+  let low = 1;
+  let high = maxEl; // We initialize answer to Infinity because we want to find the minimum speed that allows Koko to eat all bananas within the given hours. As we find valid speeds, we will update this answer with the minimum valid speed found.
+
+  let answer = Infinity;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2); // Calculate the total hours needed to eat all bananas at speed mid
+
+    let count = 0;
+    for (let i = 0; i < piles.length; i++) {
+      // We use Math.ceil to round up because if there are 4 bananas and we eat at speed 3, it will take 2 hours (1 hour for 3 bananas and another hour for the remaining 1 banana)
+      count += Math.ceil(piles[i] / mid);
+    } // If count is greater than hours, it means we need to eat faster, so we move the low pointer up
+
+    if (count > hours) {
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    } // Only update answer when count is less than or equal to hours
+
+    if (count <= hours) {
+      answer = Math.min(answer, mid);
+    }
+  }
+
+  return answer;
+}
+console.log(kokoEatingBananas([3, 6, 7, 11], 8));
