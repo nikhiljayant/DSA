@@ -360,3 +360,34 @@ function kokoEatingBananas(piles, hours) {
   return answer;
 }
 console.log(kokoEatingBananas([3, 6, 7, 11], 8));
+
+// Find the Smallest Divisor Given a Threshold
+function smallestDivisor(nums, threshold) {
+  const n = nums.length - 1;
+
+  let low = 1;
+  let high = Math.max(...nums);
+
+  let answer = high;
+
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+
+    let totalCount = 0;
+
+    for (let i = 0; i <= n; i++) {
+      totalCount += Math.ceil(nums[i] / mid);
+    }
+
+    if (totalCount <= threshold) {
+      answer = mid;
+
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return answer;
+}
+console.log(smallestDivisor([1, 2, 5, 9], 6));
