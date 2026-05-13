@@ -391,3 +391,37 @@ function smallestDivisor(nums, threshold) {
   return answer;
 }
 console.log(smallestDivisor([1, 2, 5, 9], 6));
+
+// Capacity To Ship Packages Within D Days
+function shipWithinDays(weights, days) {
+  let low = Math.max(...weights);
+  let high = weights.reduce((acc, num) => acc + num, 0);
+
+  let capacity = high;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    let sum = 0;
+    let currentDay = 1;
+
+    for (let i = 0; i < weights.length; i++) {
+      if (sum + weights[i] > mid) {
+        currentDay++;
+        sum = weights[i];
+      } else {
+        sum += weights[i];
+      }
+    }
+
+    if (currentDay <= days) {
+      capacity = mid;
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return capacity;
+}
+console.log(shipWithinDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
