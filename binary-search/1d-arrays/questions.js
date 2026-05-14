@@ -425,3 +425,22 @@ function shipWithinDays(weights, days) {
   return capacity;
 }
 console.log(shipWithinDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
+
+// Kth Missing Positive Number
+function kthMissingPositive(nums, k) {
+  let low = 0;
+  let high = nums.length - 1;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    if (arr[mid] - (mid + 1) < k) {
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    }
+  }
+
+  return low + k;
+}
+console.log(kthMissingPositive([2, 3, 4, 7, 11], 5));
