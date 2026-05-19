@@ -63,3 +63,33 @@ function allocate(books, students) {
 
   return low;
 }
+
+// Split Array Largest Sum
+function splitArray(nums, k) {
+  let low = Math.max(...nums);
+  let high = nums.reduce((acc, num) => acc + num, 0);
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    let lastEl = nums[0];
+    let kCount = 1;
+
+    for (let i = 1; i < nums.length; i++) {
+      if (nums[i] + lastEl <= mid) {
+        lastEl += nums[i];
+      } else {
+        kCount++;
+        lastEl = nums[i];
+      }
+    }
+
+    if (kCount <= k) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return low;
+}
