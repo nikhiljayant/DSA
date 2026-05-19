@@ -93,3 +93,34 @@ function splitArray(nums, k) {
 
   return low;
 }
+
+// Painter's Partition Problem
+// A = 2 Painters, B = 5 Units of time to paint 1 unit of board, C = [1, 10]
+function paint(A, B, C) {
+  let low = Math.max(...C);
+  let high = C.reduce((acc, num) => acc + num, 0);
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+
+    let painters = 1;
+    let currentSum = 0;
+
+    for (let i = 0; i < C.length; i++) {
+      if (currentSum + C[i] <= mid) {
+        currentSum += C[i];
+      } else {
+        painters++;
+        currentSum = C[i];
+      }
+    }
+
+    if (painters <= A) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }
+
+  return low * B;
+}
