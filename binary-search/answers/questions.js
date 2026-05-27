@@ -159,3 +159,49 @@ function findMedianSortedArray(nums1 = [], nums2 = []) {
 
   return 0;
 }
+
+// Finds the k-th element in the union of two sorted arrays a and b.
+// Uses a binary search partitioning approach similar to findMedianSortedArray.
+// Time Complexity: O(log(min(n1, n2)))
+function kthElement(a = [], b = [], k) {
+  // Always binary search on the smaller array to minimise iterations
+  if (a.length > b.length) return kthElement(b, a, k);
+
+  const n1 = a.length;
+  const n2 = b.length;
+
+  // cut1 must take at least max(0, k-n2) elements from `a`
+  // (so that cut2 = k - cut1 never exceeds n2),
+  // and at most min(k, n1) elements (can't take more than the array has).
+  let low = Math.max(0, k - n2);
+  let high = Math.min(k, n1);
+
+  while (low <= high) {
+    // cut1 = number of elements taken from `a` for the left partition
+    let cut1 = Math.floor((low + high) / 2);
+    // cut2 = number of elements taken from `b` so that left partition has exactly k elements
+    let cut2 = k - cut1;
+
+    // Boundary values: use -Infinity / Infinity when the cut is at the edge
+    // (i.e. no element exists on that side of the partition)
+    let left1  = cut1 === 0  ? -Infinity : a[cut1 - 1]; // largest element on the left side of `a`
+    let left2  = cut2 === 0  ? -Infinity : b[cut2 - 1]; // largest element on the left side of `b`
+    let right1 = cut1 === n1 ?  Infinity : a[cut1];     // smallest element on the right side of `a`
+    let right2 = cut2 === n2 ?  Infinity : b[cut2];     // smallest element on the right side of `b`
+
+    if (left1 <= right2 && left2 <= right1) {
+      // Valid partition found: every element in the left half ≤ every element in the right half.
+      // The k-th element is the maximum of the two left boundary values.
+      return Math.max(left1, left2);
+    } else if (left1 > right2) {
+      // cut1 is too large — move the partition in `a` to the left
+      high = cut1 - 1;
+    } else {
+      // cut1 is too small — move the partition in `a` to the right
+      low = cut1 + 1;
+    }
+  }
+
+  // Should never reach here for valid inputs
+  return 0;
+}
