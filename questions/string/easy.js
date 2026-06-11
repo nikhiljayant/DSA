@@ -68,3 +68,23 @@ var isAnagram = function (s, t) {
 
     return true;
 };
+
+var frequencySort = function (s) {
+    const frequency = {};
+
+    let result = "";
+
+    for (let i = 0; i < s.length; i++) {
+        frequency[s[i]] = (frequency[s[i]] || 0) + 1;
+    }
+
+    const sorted = Object.entries(frequency).sort((a, b) => b[1] - a[1]);
+
+    for (let j = 0; j < sorted.length; j++) {
+        for (let k = 0; k < sorted[j][1]; k++) {
+            result += sorted[j][0];
+        }
+    }
+
+    return result;
+};
