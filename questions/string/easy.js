@@ -88,3 +88,25 @@ var frequencySort = function (s) {
 
     return result;
 };
+
+var removeOuterParentheses = function (s) {
+    let depth = 0;
+
+    let result = "";
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === "(") {
+            if (depth > 0) {
+                result += s[i];
+            }
+            depth++;
+        } else {
+            depth--;
+            if (depth > 0) {
+                result += s[i];
+            }
+        }
+    }
+
+    return result;
+};
