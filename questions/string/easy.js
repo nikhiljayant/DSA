@@ -110,3 +110,33 @@ var removeOuterParentheses = function (s) {
 
     return result;
 };
+
+var reverseWords = function (s) {
+
+    let result = "";
+
+    let finalStr = "";
+
+    for (let i = 0; i < s.length; i++) {
+
+        if (s[i] !== " ") result += s[i];
+
+        if (s[i] === " " && i > 0 && s[i - 1] !== " ") {
+
+            finalStr = finalStr === "" ? result : result + " " + finalStr;
+
+            result = "";
+
+        }
+
+    }
+
+    if (result.length > 0) {
+
+        finalStr = finalStr === "" ? result : result + " " + finalStr;
+
+    }
+
+    return finalStr;
+
+};
