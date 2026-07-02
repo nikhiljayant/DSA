@@ -206,3 +206,20 @@ var isValid = function (s = "") {
 
     return stack.length === 0;
 };
+
+var lengthOfLastWord = function (s = "") {
+    const n = s.length - 1;
+
+    let lastWordLength = 0;
+
+    for (let i = n; i >= 0; i--) {
+        if (s[i] === " ") {
+            if (lastWordLength > 0) break;
+            continue;
+        }
+
+        lastWordLength++;
+    }
+
+    return lastWordLength;
+};
